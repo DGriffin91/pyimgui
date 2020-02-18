@@ -207,19 +207,24 @@ cdef extern from "imgui.h":
 
 
     ctypedef enum ImGuiTreeNodeFlags_:
-        ImGuiTreeNodeFlags_Selected             # Draw as selected
-        ImGuiTreeNodeFlags_Framed               # Full colored frame (e.g. for CollapsingHeader)
-        ImGuiTreeNodeFlags_AllowItemOverlap     # Hit testing to allow subsequent widgets to overlap this one
-        ImGuiTreeNodeFlags_NoTreePushOnOpen     # Don't do a TreePush() when open (e.g. for CollapsingHeader) = no extra indent nor pushing on ID stack
-        ImGuiTreeNodeFlags_NoAutoOpenOnLog      # Don't automatically and temporarily open node when Logging is active (by default logging will automatically open tree nodes)
-        ImGuiTreeNodeFlags_DefaultOpen          # Default node to be open
-        ImGuiTreeNodeFlags_OpenOnDoubleClick    # Need double-click to open node
-        ImGuiTreeNodeFlags_OpenOnArrow          # Only open when clicking on the arrow part. If ImGuiTreeNodeFlags_OpenOnDoubleClick is also set, single-click arrow or double-click all box to open.
-        ImGuiTreeNodeFlags_Leaf                 # No collapsing, no arrow (use as a convenience for leaf nodes).
-        ImGuiTreeNodeFlags_Bullet               # Display a bullet instead of arrow
-        ImGuiTreeNodeFlags_FramePadding         # Use FramePadding (even for an unframed text node) to vertically align text baseline to regular widget height.  Equivalent to calling AlignTextToFramePadding()
-        ImGuiTreeNodeFlags_NavLeftJumpsBackHere # (WIP) Nav: left direction may move to this TreeNode() from any of its child (items submitted between TreeNode and TreePop)
-        ImGuiTreeNodeFlags_CollapsingHeader     # ImGuiTreeNodeFlags_Framed | ImGuiTreeNodeFlags_NoAutoOpenOnLog
+        ImGuiTreeNodeFlags_None                 = 0
+        ImGuiTreeNodeFlags_Selected             = 1 << 0   # Draw as selected
+        ImGuiTreeNodeFlags_Framed               = 1 << 1   # Full colored frame (e.g. for CollapsingHeader)
+        ImGuiTreeNodeFlags_AllowItemOverlap     = 1 << 2   # Hit testing to allow subsequent widgets to overlap this one
+        ImGuiTreeNodeFlags_NoTreePushOnOpen     = 1 << 3   # Don't do a TreePush() when open (e.g. for CollapsingHeader) = no extra indent nor pushing on ID stack
+        ImGuiTreeNodeFlags_NoAutoOpenOnLog      = 1 << 4   # Don't automatically and temporarily open node when Logging is active (by default logging will automatically open tree nodes)
+        ImGuiTreeNodeFlags_DefaultOpen          = 1 << 5   # Default node to be open
+        ImGuiTreeNodeFlags_OpenOnDoubleClick    = 1 << 6   # Need double-click to open node
+        ImGuiTreeNodeFlags_OpenOnArrow          = 1 << 7   # Only open when clicking on the arrow part. If ImGuiTreeNodeFlags_OpenOnDoubleClick is also set, single-click arrow or double-click all box to open.
+        ImGuiTreeNodeFlags_Leaf                 = 1 << 8   # No collapsing, no arrow (use as a convenience for leaf nodes).
+        ImGuiTreeNodeFlags_Bullet               = 1 << 9   # Display a bullet instead of arrow
+        ImGuiTreeNodeFlags_FramePadding         = 1 << 10  # Use FramePadding (even for an unframed text node) to vertically align text baseline to regular widget height. Equivalent to calling AlignTextToFramePadding().
+        ImGuiTreeNodeFlags_SpanAvailWidth       = 1 << 11  # Extend hit box to the right-most edge, even if not framed. This is not the default in order to allow adding other items on the same line. In the future we may refactor the hit system to be front-to-back, allowing natural overlaps and then this can become the default.
+        ImGuiTreeNodeFlags_SpanFullWidth        = 1 << 12  # Extend hit box to the left-most and right-most edges (bypass the indented area).
+        ImGuiTreeNodeFlags_NavLeftJumpsBackHere = 1 << 13  # (WIP) Nav: left direction may move to this TreeNode() from any of its child (items submitted between TreeNode and TreePop)
+        #ImGuiTreeNodeFlags_NoScrollOnOpen      = 1 << 14  # FIXME: TODO: Disable automatic scroll on TreePop() if node got just open and contents is not visible
+        ImGuiTreeNodeFlags_CollapsingHeader     = ImGuiTreeNodeFlags_Framed | ImGuiTreeNodeFlags_NoTreePushOnOpen | ImGuiTreeNodeFlags_NoAutoOpenOnLog
+
 
     ctypedef enum ImGuiSelectableFlags_:
         ImGuiSelectableFlags_DontClosePopups    # Clicking this don't close parent popup window
@@ -241,6 +246,86 @@ cdef extern from "imgui.h":
         ImGuiFocusedFlags_RootWindow            # IsWindowFocused(): Test from root window (top most parent of the current hierarchy)
         ImGuiFocusedFlags_AnyWindow             # IsWindowFocused(): Return true if any window is focused
         ImGuiFocusedFlags_RootAndChildWindows   # ImGuiFocusedFlags_RootWindow | ImGuiFocusedFlags_ChildWindows
+
+
+    ctypedef enum ImGuiTableFlags_:
+        # Features
+        ImGuiTableFlags_None                            = 0,
+        ImGuiTableFlags_Resizable                       = 1 << 0,   # Allow resizing columns.
+        ImGuiTableFlags_Reorderable                     = 1 << 1,   # Allow reordering columns (need calling TableSetupColumn() + TableAutoHeaders() or TableHeaders() to display headers)
+        ImGuiTableFlags_Hideable                        = 1 << 2,   # Allow hiding columns (with right-click on header) (FIXME-TABLE: allow without headers).
+        ImGuiTableFlags_Sortable                        = 1 << 3,   # Allow sorting on one column (sort_specs_count will always be == 1). Call TableGetSortSpecs() to obtain sort specs.
+        ImGuiTableFlags_MultiSortable                   = 1 << 4,   # Allow sorting on multiple columns by holding Shift (sort_specs_count may be > 1). Call TableGetSortSpecs() to obtain sort specs.
+        ImGuiTableFlags_NoSavedSettings                 = 1 << 5,   # Disable persisting columns order, width and sort settings in the .ini file.
+        # Decoration
+        ImGuiTableFlags_RowBg                           = 1 << 6,   # Use ImGuiCol_TableRowBg and ImGuiCol_TableRowBgAlt colors behind each rows.
+        ImGuiTableFlags_BordersHInner                   = 1 << 7,   # Draw horizontal borders between rows.
+        ImGuiTableFlags_BordersHOuter                   = 1 << 8,   # Draw horizontal borders at the top and bottom.
+        ImGuiTableFlags_BordersVInner                   = 1 << 9,   # Draw vertical borders between columns.
+        ImGuiTableFlags_BordersVOuter                   = 1 << 10,  # Draw vertical borders on the left and right sides.
+        ImGuiTableFlags_BordersH                        = ImGuiTableFlags_BordersHInner | ImGuiTableFlags_BordersHOuter, # Draw horizontal borders.
+        ImGuiTableFlags_BordersV                        = ImGuiTableFlags_BordersVInner | ImGuiTableFlags_BordersVOuter, # Draw vertical borders.
+        ImGuiTableFlags_BordersInner                    = ImGuiTableFlags_BordersVInner | ImGuiTableFlags_BordersHInner, # Draw inner borders.
+        ImGuiTableFlags_BordersOuter                    = ImGuiTableFlags_BordersVOuter | ImGuiTableFlags_BordersHOuter, # Draw outer borders.
+        ImGuiTableFlags_Borders                         = ImGuiTableFlags_BordersInner | ImGuiTableFlags_BordersOuter,   # Draw all borders.
+        ImGuiTableFlags_BordersVFullHeight              = 1 << 11,  # Borders covers all rows even when Headers are being used. Allow resizing from any rows.
+        # Padding, Sizing
+        ImGuiTableFlags_NoClipX                         = 1 << 12,  # Disable pushing clipping rectangle for every individual columns (reduce draw command count, items will be able to overflow)
+        ImGuiTableFlags_SizingPolicyFixedX              = 1 << 13,  # Default if ScrollX is on. Columns will default to use WidthFixed or WidthAlwaysAutoResize policy. Read description above for more details.
+        ImGuiTableFlags_SizingPolicyStretchX            = 1 << 14,  # Default if ScrollX is off. Columns will default to use WidthStretch policy. Read description above for more details.
+        ImGuiTableFlags_NoHeadersWidth                  = 1 << 15,  # Disable header width contribution to automatic width calculation.
+        ImGuiTableFlags_NoHostExtendY                   = 1 << 16,  # (FIXME-TABLE: Reword as SizingPolicy?) Disable extending past the limit set by outer_size.y, only meaningful when neither of ScrollX|ScrollY are set (data below the limit will be clipped and not visible)
+        ImGuiTableFlags_NoKeepColumnsVisible            = 1 << 17,  # (FIXME-TABLE) Disable code that keeps column always minimally visible when table width gets too small.
+        # Scrolling
+        ImGuiTableFlags_ScrollX                         = 1 << 18,  # Enable horizontal scrolling. Require 'outer_size' parameter of BeginTable() to specify the container size. Because this create a child window, ScrollY is currently generally recommended when using ScrollX.
+        ImGuiTableFlags_ScrollY                         = 1 << 19,  # Enable vertical scrolling. Require 'outer_size' parameter of BeginTable() to specify the container size.
+        ImGuiTableFlags_Scroll                          = ImGuiTableFlags_ScrollX | ImGuiTableFlags_ScrollY,
+        ImGuiTableFlags_ScrollFreezeTopRow              = 1 << 20,  # We can lock 1 to 3 rows (starting from the top). Use with ScrollY enabled.
+        ImGuiTableFlags_ScrollFreeze2Rows               = 2 << 20,
+        ImGuiTableFlags_ScrollFreeze3Rows               = 3 << 20,
+        ImGuiTableFlags_ScrollFreezeLeftColumn          = 1 << 22,  # We can lock 1 to 3 columns (starting from the left). Use with ScrollX enabled.
+        ImGuiTableFlags_ScrollFreeze2Columns            = 2 << 22,
+        ImGuiTableFlags_ScrollFreeze3Columns            = 3 << 22,
+    
+        # [Internal] Combinations and masks
+        ImGuiTableFlags_SizingPolicyMaskX_              = ImGuiTableFlags_SizingPolicyStretchX | ImGuiTableFlags_SizingPolicyFixedX,
+        ImGuiTableFlags_ScrollFreezeRowsShift_          = 20,
+        ImGuiTableFlags_ScrollFreezeColumnsShift_       = 22,
+        ImGuiTableFlags_ScrollFreezeRowsMask_           = 0x03 << ImGuiTableFlags_ScrollFreezeRowsShift_,
+        ImGuiTableFlags_ScrollFreezeColumnsMask_        = 0x03 << ImGuiTableFlags_ScrollFreezeColumnsShift_
+
+
+    # Flags for ImGui::TableSetupColumn()
+    # FIXME-TABLE: Rename to ImGuiColumns_*, stick old columns api flags in there under an obsolete api block
+    ctypedef enum ImGuiTableColumnFlags_:
+        ImGuiTableColumnFlags_None                      = 0,
+        ImGuiTableColumnFlags_DefaultHide               = 1 << 0,   # Default as a hidden column.
+        ImGuiTableColumnFlags_DefaultSort               = 1 << 1,   # Default as a sorting column.
+        ImGuiTableColumnFlags_WidthFixed                = 1 << 2,   # Column will keep a fixed size, preferable with horizontal scrolling enabled (default if table sizing policy is SizingPolicyFixedX and table is resizable).
+        ImGuiTableColumnFlags_WidthStretch              = 1 << 3,   # Column will stretch, preferable with horizontal scrolling disabled (default if table sizing policy is SizingPolicyStretchX).
+        ImGuiTableColumnFlags_WidthAlwaysAutoResize     = 1 << 4,   # Column will keep resizing based on submitted contents (with a one frame delay) == Fixed with auto resize (default if table sizing policy is SizingPolicyFixedX and table is not resizable).
+        ImGuiTableColumnFlags_NoResize                  = 1 << 5,   # Disable manual resizing.
+        ImGuiTableColumnFlags_NoClipX                   = 1 << 6,   # Disable clipping for this column (all NoClipX columns will render in a same draw command).
+        ImGuiTableColumnFlags_NoSort                    = 1 << 7,   # Disable ability to sort on this field (even if ImGuiTableFlags_Sortable is set on the table).
+        ImGuiTableColumnFlags_NoSortAscending           = 1 << 8,   # Disable ability to sort in the ascending direction.
+        ImGuiTableColumnFlags_NoSortDescending          = 1 << 9,   # Disable ability to sort in the descending direction.
+        ImGuiTableColumnFlags_NoHide                    = 1 << 10,  # Disable hiding this column.
+        ImGuiTableColumnFlags_NoHeaderWidth             = 1 << 11,  # Header width don't contribute to automatic column width.
+        ImGuiTableColumnFlags_PreferSortAscending       = 1 << 12,  # Make the initial sort direction Ascending when first sorting on this column (default).
+        ImGuiTableColumnFlags_PreferSortDescending      = 1 << 13,  # Make the initial sort direction Descending when first sorting on this column.
+        ImGuiTableColumnFlags_IndentEnable              = 1 << 14,  # Use current Indent value when entering cell (default for 1st column).
+        ImGuiTableColumnFlags_IndentDisable             = 1 << 15,  # Ignore current Indent value when entering cell (default for columns after the 1st one). Indentation changes _within_ the cell will still be honored.
+    
+        # [Internal] Combinations and masks
+        ImGuiTableColumnFlags_WidthMask_                = ImGuiTableColumnFlags_WidthFixed | ImGuiTableColumnFlags_WidthStretch | ImGuiTableColumnFlags_WidthAlwaysAutoResize,
+        ImGuiTableColumnFlags_IndentMask_               = ImGuiTableColumnFlags_IndentEnable | ImGuiTableColumnFlags_IndentDisable,
+        ImGuiTableColumnFlags_NoDirectResize_           = 1 << 20   # [Internal] Disable user resizing this column directly (it may however we resized indirectly from its left edge)
+
+    # Flags for ImGui::TableNextRow()
+    ctypedef enum ImGuiTableRowFlags_:
+        ImGuiTableRowFlags_None                         = 0,
+        ImGuiTableRowFlags_Headers                      = 1 << 0    # Identify header row (set default background color + width of its contents accounted different for auto column width)
+
 
     ctypedef enum ImGuiHoveredFlags_:
         ImGuiHoveredFlags_None                          # Return true if directly over the item/window, not obstructed by another window, not obstructed by an active popup or modal blocking inputs under them.
