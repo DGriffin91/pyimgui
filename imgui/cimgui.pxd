@@ -60,6 +60,9 @@ cdef extern from "imgui.h":
     ctypedef int ImGuiComboFlags
     ctypedef int ImGuiDragDropFlags
     ctypedef int ImGuiFocusedFlags
+    ctypedef int ImGuiTableFlags
+    ctypedef int ImGuiTableRowFlags
+    ctypedef int ImGuiTableColumnFlags
     ctypedef int ImGuiHoveredFlags
     ctypedef int ImGuiInputTextFlags
     ctypedef int ImGuiSelectableFlags
@@ -1119,6 +1122,24 @@ cdef extern from "imgui.h" namespace "ImGui":
     void SetColumnOffset(int column_index, float offset_x) except +  # ✓
     int GetColumnsCount() except +  # ✓
 
+
+    # ====
+    # Tables
+
+    bool BeginTable(const char* str_id, int columns_count, ImGuiTableFlags flags, ImVec2 outer_size, float inner_width) except +  # ✓
+    void EndTable() except +  # ✓
+    void TableNextRow(ImGuiTableRowFlags row_flags, float min_row_height) except +  # ✓
+    bool TableNextCell() except +  # ✓ 
+    bool TableSetColumnIndex(int column_n) except +  # ✓ 
+    int TableGetColumnIndex() except +  # ✓ 
+    const char*  TableGetColumnName(int column_n) except +  # ✓ 
+    bool TableGetColumnIsVisible(int column_n) except +  # ✓ 
+    bool TableGetColumnIsSorted(int column_n) except +  # ✓ 
+
+
+    void TableSetupColumn(const char* label, ImGuiTableColumnFlags flags, float init_width_or_weight, ImU32 user_id) except +  # ✓ 
+    void TableAutoHeaders() except +  # ✓ 
+    void TableHeader(const char* label) except +  # ✓ 
 
     # Logging: all text output from interface is redirected to
     # tty/file/clipboard. By default, tree nodes are automatically opened
