@@ -16,6 +16,7 @@ bootstrap: .bootstrapped ;
 .bootstrapped:
 	@echo "Bootstrapping project environment ..."
 	git submodule update --init
+	git merge origin/tables
 	pip install -r doc/requirements-dev.txt
 	@touch .bootstrapped
 
