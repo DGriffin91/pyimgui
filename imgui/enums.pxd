@@ -230,6 +230,8 @@ cdef extern from "imgui.h":
         ImGuiSelectableFlags_DontClosePopups    # Clicking this don't close parent popup window
         ImGuiSelectableFlags_SpanAllColumns     # Selectable frame can span all columns (text will still fit in current column)
         ImGuiSelectableFlags_AllowDoubleClick   # Generate press events on double clicks too
+        ImGuiSelectableFlags_Disabled = 8
+        ImGuiSelectableFlags_AllowItemOverlap = 16
 
     ctypedef enum ImGuiComboFlags_:
         ImGuiComboFlags_PopupAlignLeft          # Align the popup toward the left by default
