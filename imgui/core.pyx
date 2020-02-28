@@ -44,27 +44,31 @@ FIRST_USE_EVER = enums.ImGuiCond_FirstUseEver
 APPEARING = enums.ImGuiCond_Appearing
 
 # ==== Style var enum redefines ====
-STYLE_ALPHA = enums.ImGuiStyleVar_Alpha # float
-STYLE_WINDOW_PADDING = enums.ImGuiStyleVar_WindowPadding  # Vec2
-STYLE_WINDOW_ROUNDING = enums.ImGuiStyleVar_WindowRounding  # float
-STYLE_WINDOW_BORDERSIZE = enums.ImGuiStyleVar_WindowBorderSize  # float
-STYLE_WINDOW_MIN_SIZE = enums.ImGuiStyleVar_WindowMinSize  # Vec2
-STYLE_WINDOW_TITLE_ALIGN = enums.ImGuiStyleVar_WindowTitleAlign  # Vec2
-STYLE_CHILD_ROUNDING = enums.ImGuiStyleVar_ChildRounding  # float
-STYLE_CHILD_BORDERSIZE = enums.ImGuiStyleVar_ChildBorderSize  # float
-STYLE_POPUP_ROUNDING = enums.ImGuiStyleVar_PopupRounding  # float
-STYLE_POPUP_BORDERSIZE = enums.ImGuiStyleVar_PopupBorderSize  # float
-STYLE_FRAME_PADDING = enums.ImGuiStyleVar_FramePadding # Vec2
-STYLE_FRAME_ROUNDING = enums.ImGuiStyleVar_FrameRounding # float
-STYLE_FRAME_BORDERSIZE = enums.ImGuiStyleVar_FrameBorderSize  # float
-STYLE_ITEM_SPACING = enums.ImGuiStyleVar_ItemSpacing # Vec2
-STYLE_ITEM_INNER_SPACING = enums.ImGuiStyleVar_ItemInnerSpacing # Vec2
-STYLE_INDENT_SPACING = enums.ImGuiStyleVar_IndentSpacing # float
-STYLE_SCROLLBAR_SIZE = enums.ImGuiStyleVar_ScrollbarSize # float
-STYLE_SCROLLBAR_ROUNDING = enums.ImGuiStyleVar_ScrollbarRounding # float
-STYLE_GRAB_MIN_SIZE = enums.ImGuiStyleVar_GrabMinSize # float
-STYLE_GRAB_ROUNDING = enums.ImGuiStyleVar_GrabRounding # float
-STYLE_BUTTON_TEXT_ALIGN = enums.ImGuiStyleVar_ButtonTextAlign # flags ImGuiAlign_*
+STYLE_ALPHA = enums.ImGuiStyleVar_Alpha # float  
+STYLE_WINDOW_PADDING = enums.ImGuiStyleVar_WindowPadding # ImVec2 
+STYLE_WINDOW_ROUNDING = enums.ImGuiStyleVar_WindowRounding # float  
+STYLE_WINDOW_BORDERSIZE = enums.ImGuiStyleVar_WindowBorderSize # float  
+STYLE_WINDOW_MIN_SIZE = enums.ImGuiStyleVar_WindowMinSize # ImVec2 
+STYLE_WINDOW_TITLE_ALIGN = enums.ImGuiStyleVar_WindowTitleAlign # ImVec2 
+STYLE_CHILD_ROUNDING = enums.ImGuiStyleVar_ChildRounding # float  
+STYLE_CHILD_BORDERSIZE = enums.ImGuiStyleVar_ChildBorderSize # float  
+STYLE_POPUP_ROUNDING = enums.ImGuiStyleVar_PopupRounding # float  
+STYLE_POPUP_BORDERSIZE = enums.ImGuiStyleVar_PopupBorderSize # float  
+STYLE_FRAME_PADDING = enums.ImGuiStyleVar_FramePadding # ImVec2 
+STYLE_FRAME_ROUNDING = enums.ImGuiStyleVar_FrameRounding  # float  
+STYLE_FRAME_BORDERSIZE = enums.ImGuiStyleVar_FrameBorderSize # float  
+STYLE_ITEM_SPACING = enums.ImGuiStyleVar_ItemSpacing # ImVec2 
+STYLE_ITEM_INNER_SPACING = enums.ImGuiStyleVar_ItemInnerSpacing # ImVec2 
+STYLE_CELL_PADDING = enums.ImGuiStyleVar_CellPadding # ImVec2 
+STYLE_INDENT_SPACING = enums.ImGuiStyleVar_IndentSpacing # float  
+STYLE_SCROLLBAR_SIZE = enums.ImGuiStyleVar_ScrollbarSize # float  
+STYLE_SCROLLBAR_ROUNDING = enums.ImGuiStyleVar_ScrollbarRounding # float  
+STYLE_GRAB_MIN_SIZE = enums.ImGuiStyleVar_GrabMinSize # float  
+STYLE_GRAB_ROUNDING = enums.ImGuiStyleVar_GrabRounding # float  
+STYLE_TAB_ROUNDING = enums.ImGuiStyleVar_TabRounding # float  
+STYLE_BUTTON_TEXT_ALIGN = enums.ImGuiStyleVar_ButtonTextAlign # ImVec2 
+STYLE_SELECTABLE_TEXT_ALIGN = enums.ImGuiStyleVar_SelectableTextAlign # ImVec2 
+STYLE_COUNT = enums.ImGuiStyleVar_Count_
 
 # ==== Key map enum redefines ====
 KEY_TAB = enums.ImGuiKey_Tab                 # for tabbing through fields
@@ -111,23 +115,30 @@ WINDOW_NO_NAV_FOCUS = enums.ImGuiWindowFlags_NoNavFocus
 WINDOW_NO_NAV = enums.ImGuiWindowFlags_NoNav
 
 # ==== TreeNode flags enum redefines ====
-TREE_NODE_SELECTED = enums.ImGuiTreeNodeFlags_Selected
-TREE_NODE_FRAMED = enums.ImGuiTreeNodeFlags_Framed
-TREE_NODE_ALLOW_ITEM_OVERLAP = enums.ImGuiTreeNodeFlags_AllowItemOverlap
-TREE_NODE_NO_TREE_PUSH_ON_OPEN = enums.ImGuiTreeNodeFlags_NoTreePushOnOpen
-TREE_NODE_NO_AUTO_OPEN_ON_LOG = enums.ImGuiTreeNodeFlags_NoAutoOpenOnLog
-TREE_NODE_DEFAULT_OPEN = enums.ImGuiTreeNodeFlags_DefaultOpen
-TREE_NODE_OPEN_ON_DOUBLE_CLICK = enums.ImGuiTreeNodeFlags_OpenOnDoubleClick
-TREE_NODE_OPEN_ON_ARROW = enums.ImGuiTreeNodeFlags_OpenOnArrow
-TREE_NODE_LEAF = enums.ImGuiTreeNodeFlags_Leaf
-TREE_NODE_BULLET = enums.ImGuiTreeNodeFlags_Bullet
-TREE_NODE_FRAME_PADDING = enums.ImGuiTreeNodeFlags_FramePadding
-TREE_NODE_COLLAPSING_HEADER = enums.ImGuiTreeNodeFlags_CollapsingHeader
+TREE_NODE_NONE = enums.ImGuiTreeNodeFlags_None                
+TREE_NODE_SELECTED = enums.ImGuiTreeNodeFlags_Selected            
+TREE_NODE_FRAMED = enums.ImGuiTreeNodeFlags_Framed              
+TREE_NODE_ALLOW_ITEM_OVERLAP = enums.ImGuiTreeNodeFlags_AllowItemOverlap    
+TREE_NODE_NO_TREE_PUSH_ON_OPEN = enums.ImGuiTreeNodeFlags_NoTreePushOnOpen    
+TREE_NODE_NO_AUTO_OPEN_ON_LOG = enums.ImGuiTreeNodeFlags_NoAutoOpenOnLog     
+TREE_NODE_DEFAULT_OPEN = enums.ImGuiTreeNodeFlags_DefaultOpen         
+TREE_NODE_OPEN_ON_DOUBLE_CLICK = enums.ImGuiTreeNodeFlags_OpenOnDoubleClick   
+TREE_NODE_OPEN_ON_ARROW = enums.ImGuiTreeNodeFlags_OpenOnArrow         
+TREE_NODE_LEAF = enums.ImGuiTreeNodeFlags_Leaf                
+TREE_NODE_BULLET = enums.ImGuiTreeNodeFlags_Bullet              
+TREE_NODE_FRAME_PADDING = enums.ImGuiTreeNodeFlags_FramePadding        
+TREE_NODE_SPAN_AVAIL_WIDTH = enums.ImGuiTreeNodeFlags_SpanAvailWidth      
+TREE_NODE_SPAN_FULL_WIDTH = enums.ImGuiTreeNodeFlags_SpanFullWidth       
+TREE_NODE_NAV_LEFT_JUMPS_BACK_HERE = enums.ImGuiTreeNodeFlags_NavLeftJumpsBackHere
+TREE_NODE_COLLAPSING_HEADER = enums.ImGuiTreeNodeFlags_CollapsingHeader    
 
 # ==== Selectable flags enum redefines ====
 SELECTABLE_DONT_CLOSE_POPUPS = enums.ImGuiSelectableFlags_DontClosePopups
 SELECTABLE_SPAN_ALL_COLUMNS = enums.ImGuiSelectableFlags_SpanAllColumns
 SELECTABLE_ALLOW_DOUBLE_CLICK = enums.ImGuiSelectableFlags_AllowDoubleClick
+SELECTABLE_NONE = enums.ImGuiSelectableFlags_None 
+SELECTABLE_DISABLED = enums.ImGuiSelectableFlags_Disabled
+SELECTABLE_ALLOW_ITEM_OVERLAP = enums.ImGuiSelectableFlags_AllowItemOverlap
 
 # ==== Combo flags enum redefines ====
 
@@ -145,6 +156,86 @@ FOCUS_CHILD_WINDOWS = enums.ImGuiFocusedFlags_ChildWindows
 FOCUS_ROOT_WINDOW = enums.ImGuiFocusedFlags_RootWindow
 FOCUS_ANY_WINDOW = enums.ImGuiFocusedFlags_AnyWindow
 FOCUS_ROOT_AND_CHILD_WINDOWS = enums.ImGuiFocusedFlags_RootAndChildWindows
+
+# ==== Table Flags ====
+
+# Features
+TABLE_NONE = enums.ImGuiTableFlags_None                      
+TABLE_RESIZABLE = enums.ImGuiTableFlags_Resizable                 
+TABLE_REORDERABLE = enums.ImGuiTableFlags_Reorderable               
+TABLE_HIDEABLE = enums.ImGuiTableFlags_Hideable                  
+TABLE_SORTABLE = enums.ImGuiTableFlags_Sortable                  
+TABLE_MULTI_SORTABLE = enums.ImGuiTableFlags_MultiSortable             
+TABLE_NO_SAVED_SETTINGS = enums.ImGuiTableFlags_NoSavedSettings   
+
+# Decoration
+TABLE_ROW_BG = enums.ImGuiTableFlags_RowBg                     
+TABLE_BORDERS_H_INNER = enums.ImGuiTableFlags_BordersHInner             
+TABLE_BORDERS_H_OUTER = enums.ImGuiTableFlags_BordersHOuter             
+TABLE_BORDERS_V_INNER = enums.ImGuiTableFlags_BordersVInner             
+TABLE_BORDERS_V_OUTER = enums.ImGuiTableFlags_BordersVOuter             
+TABLE_BORDERS_H = enums.ImGuiTableFlags_BordersH                  
+TABLE_BORDERS_V = enums.ImGuiTableFlags_BordersV                  
+TABLE_BORDERS_INNER = enums.ImGuiTableFlags_BordersInner              
+TABLE_BORDERS_OUTER = enums.ImGuiTableFlags_BordersOuter              
+TABLE_BORDERS = enums.ImGuiTableFlags_Borders                   
+TABLE_BORDERS_V_FULL_HEIGHT = enums.ImGuiTableFlags_BordersVFullHeight  
+
+# Padding, Sizing
+TABLE_NO_CLIP_X = enums.ImGuiTableFlags_NoClipX                   
+TABLE_SIZING_POLICY_FIXED_X = enums.ImGuiTableFlags_SizingPolicyFixedX        
+TABLE_SIZING_POLICY_STRETCH_X = enums.ImGuiTableFlags_SizingPolicyStretchX      
+TABLE_NO_HEADERS_WIDTH = enums.ImGuiTableFlags_NoHeadersWidth            
+TABLE_NO_HOST_EXTEND_Y = enums.ImGuiTableFlags_NoHostExtendY             
+TABLE_NO_KEEP_COLUMNS_VISIBLE = enums.ImGuiTableFlags_NoKeepColumnsVisible      
+
+# Scrolling
+TABLE_SCROLL_X = enums.ImGuiTableFlags_ScrollX                   
+TABLE_SCROLL_Y = enums.ImGuiTableFlags_ScrollY                   
+TABLE_SCROLL = enums.ImGuiTableFlags_Scroll                    
+TABLE_SCROLL_FREEZE_TOP_ROW = enums.ImGuiTableFlags_ScrollFreezeTopRow        
+TABLE_SCROLL_FREEZE2_ROWS = enums.ImGuiTableFlags_ScrollFreeze2Rows         
+TABLE_SCROLL_FREEZE3_ROWS = enums.ImGuiTableFlags_ScrollFreeze3Rows         
+TABLE_SCROLL_FREEZE_LEFT_COLUMN = enums.ImGuiTableFlags_ScrollFreezeLeftColumn    
+TABLE_SCROLL_FREEZE2_COLUMNS = enums.ImGuiTableFlags_ScrollFreeze2Columns      
+TABLE_SCROLL_FREEZE3_COLUMNS = enums.ImGuiTableFlags_ScrollFreeze3Columns      
+
+# [Internal] Combinations and masks
+TABLE_SIZING_POLICY_MASK_X = enums.ImGuiTableFlags_SizingPolicyMaskX_        
+TABLE_SCROLL_FREEZE_ROWS_SHIFT = enums.ImGuiTableFlags_ScrollFreezeRowsShift_    
+TABLE_SCROLL_FREEZE_COLUMNS_SHIFT = enums.ImGuiTableFlags_ScrollFreezeColumnsShift_ 
+TABLE_SCROLL_FREEZE_ROWS_MASK = enums.ImGuiTableFlags_ScrollFreezeRowsMask_     
+TABLE_SCROLL_FREEZE_COLUMNS_MASK = enums.ImGuiTableFlags_ScrollFreezeColumnsMask_  
+
+# ==== Table Column Flags ====
+
+TABLE_COLUMN_NONE = enums.ImGuiTableColumnFlags_None
+TABLE_COLUMN_DEFAULT_HIDE = enums.ImGuiTableColumnFlags_DefaultHide
+TABLE_COLUMN_DEFAULT_SORT = enums.ImGuiTableColumnFlags_DefaultSort
+TABLE_COLUMN_WIDTH_FIXED = enums.ImGuiTableColumnFlags_WidthFixed
+TABLE_COLUMN_WIDTH_STRETCH = enums.ImGuiTableColumnFlags_WidthStretch
+TABLE_COLUMN_WIDTH_ALWAYS_AUTO_RESIZE = enums.ImGuiTableColumnFlags_WidthAlwaysAutoResize
+TABLE_COLUMN_NO_RESIZE = enums.ImGuiTableColumnFlags_NoResize
+TABLE_COLUMN_NO_CLIP_X = enums.ImGuiTableColumnFlags_NoClipX
+TABLE_COLUMN_NO_SORT = enums.ImGuiTableColumnFlags_NoSort
+TABLE_COLUMN_NO_SORT_ASCENDING = enums.ImGuiTableColumnFlags_NoSortAscending
+TABLE_COLUMN_NO_SORT_DESCENDING = enums.ImGuiTableColumnFlags_NoSortDescending
+TABLE_COLUMN_NO_HIDE = enums.ImGuiTableColumnFlags_NoHide
+TABLE_COLUMN_NO_HEADER_WIDTH = enums.ImGuiTableColumnFlags_NoHeaderWidth
+TABLE_COLUMN_PREFER_SORT_ASCENDING = enums.ImGuiTableColumnFlags_PreferSortAscending
+TABLE_COLUMN_PREFER_SORT_DESCENDING = enums.ImGuiTableColumnFlags_PreferSortDescending
+TABLE_COLUMN_INDENT_ENABLE = enums.ImGuiTableColumnFlags_IndentEnable
+TABLE_COLUMN_INDENT_DISABLE = enums.ImGuiTableColumnFlags_IndentDisable
+
+#[Internal] Combinations and masks
+TABLE_COLUMN_WIDTH_MASK = enums.ImGuiTableColumnFlags_WidthMask_
+TABLE_COLUMN_INDENT_MASK = enums.ImGuiTableColumnFlags_IndentMask_
+TABLE_COLUMN_NO_DIRECT_RESIZE = enums.ImGuiTableColumnFlags_NoDirectResize_
+#Flags for ImGui::TableNextRow()
+
+TABLE_ROW_NONE = enums.ImGuiTableRowFlags_None
+TABLE_ROW_HEADERS = enums.ImGuiTableRowFlags_Headers
+
 
 # === Hovered flag enum redefines ====
 HOVERED_NONE = enums.ImGuiHoveredFlags_None
@@ -678,7 +769,7 @@ cdef class _DrawList(object):
             _cast_args_ImVec2(pos_x, pos_y),
             col,
             _bytes(text),
-            NULL
+            text_end = NULL
         )
 
     def add_image(self,
@@ -1039,6 +1130,16 @@ cdef class GuiStyle(object):
         self._ptr.ItemInnerSpacing = _cast_tuple_ImVec2(value)
 
     @property
+    def cell_padding(self):
+        self._check_ptr()
+        return _cast_ImVec2_tuple(self._ptr.CellPadding)
+
+    @cell_padding.setter
+    def cell_padding(self, value):
+        self._check_ptr()
+        self._ptr.CellPadding = _cast_tuple_ImVec2(value)
+
+    @property
     def touch_extra_padding(self):
         self._check_ptr()
         return _cast_ImVec2_tuple(self._ptr.TouchExtraPadding)
@@ -1109,6 +1210,16 @@ cdef class GuiStyle(object):
         self._ptr.GrabRounding = value
 
     @property
+    def tab_rounding(self):
+        self._check_ptr()
+        return self._ptr.TabRounding
+
+    @tab_rounding.setter
+    def tab_rounding(self, float value):
+        self._check_ptr()
+        self._ptr.TabRounding = value
+
+    @property
     def button_text_align(self):
         self._check_ptr()
         return _cast_ImVec2_tuple(self._ptr.ButtonTextAlign)
@@ -1117,6 +1228,16 @@ cdef class GuiStyle(object):
     def button_text_align(self, value):
         self._check_ptr()
         self._ptr.ButtonTextAlign = _cast_tuple_ImVec2(value)
+
+    @property
+    def selectable_text_align(self):
+        self._check_ptr()
+        return _cast_ImVec2_tuple(self._ptr.SelectableTextAlign)
+
+    @selectable_text_align.setter
+    def selectable_text_align(self, value):
+        self._check_ptr()
+        self._ptr.SelectableTextAlign = _cast_tuple_ImVec2(value)
 
     @property
     def display_window_padding(self):
@@ -1566,7 +1687,7 @@ cdef class _IO(object):
     @display_fb_scale.setter
     def display_fb_scale(self, value):
         self._ptr.DisplayFramebufferScale = _cast_tuple_ImVec2(value)
-
+    '''
     @property
     def display_visible_min(self):
         return _cast_ImVec2_tuple(self._ptr.DisplayVisibleMin)
@@ -1582,6 +1703,7 @@ cdef class _IO(object):
     @display_visible_max.setter
     def display_visible_max(self,  value):
         self._ptr.DisplayVisibleMax = _cast_tuple_ImVec2(value)
+    '''
 
     @property
     def config_mac_osx_behaviors(self):
@@ -1598,7 +1720,7 @@ cdef class _IO(object):
     @config_cursor_blink.setter
     def config_cursor_blink(self, cimgui.bool value):
         self._ptr.ConfigInputTextCursorBlink = value
-
+    '''
     @property
     def config_resize_windows_from_edges(self):
         return self._ptr.ConfigResizeWindowsFromEdges
@@ -1606,7 +1728,7 @@ cdef class _IO(object):
     @config_resize_windows_from_edges.setter
     def config_resize_windows_from_edges(self, cimgui.bool value):
         self._ptr.ConfigResizeWindowsFromEdges = value
-
+    '''
     @property
     def mouse_pos(self):
         return _cast_ImVec2_tuple(self._ptr.MousePos)
@@ -3403,6 +3525,26 @@ def text_colored(str text, float r, float g, float b, float a=1.):
     # note: "%s" required for safety and to favor of Python string formating
     cimgui.TextColored(_cast_args_ImVec4(r, g, b, a), "%s", _bytes(text))
 
+def text_disabled(str text):
+    """Add text to current widget stack.
+
+    .. visual-example::
+        :title: simple text widget
+        :height: 80
+        :auto_layout:
+
+        imgui.begin("Example: simple text")
+        imgui.text("Simple text")
+        imgui.end()
+
+    Args:
+        text (str): text to display.
+
+    .. wraps::
+        Text(const char* fmt, ...)
+    """
+    # note: "%s" required for safety and to favor of Python string formating
+    cimgui.TextDisabled("%s", _bytes(text))
 
 def label_text(str label, str text):
     """Display text+label aligned the same way as value+label widgets.
@@ -6892,6 +7034,67 @@ def get_columns_count():
         int GetColumnsCount()
     """
     return cimgui.GetColumnsCount()
+
+
+# Tables
+# [ALPHA API] API will evolve! (FIXME-TABLE)
+# - Full-featured replacement for old Columns API
+# - In most situations you can use TableNextRow() + TableSetColumnIndex() to populate a table.
+# - If you are using tables as a sort of grid, populating every columns with the same type of contents,
+#   you may prefer using TableNextCell() instead of TableNextRow() + TableSetColumnIndex().
+# - See Demo->Tables for details.
+# - See ImGuiTableFlags_ enums for a description of available flags. 
+
+def begin_table(str str_id, int columns_count, cimgui.ImGuiTableFlags flags = 0, tuple outer_size = (0.0, 0.0), float inner_width = 0.0):
+    return cimgui.BeginTable(_bytes(str_id), columns_count, flags, _cast_tuple_ImVec2(outer_size), inner_width)
+
+def end_table():
+    return cimgui.EndTable()
+
+# append into the first cell of a new row.
+def table_next_row(cimgui.ImGuiTableRowFlags row_flags = 0, float min_row_height = 0.0):
+    return cimgui.TableNextRow(row_flags, min_row_height)
+
+# append into the next column (next column, or next row if currently in last column). Return true if column is visible.
+def table_next_cell():
+    return cimgui.TableNextCell()
+
+# append into the specified column. Return true if column is visible.
+def table_set_column_index(int column_n):
+    return cimgui.TableSetColumnIndex(column_n)
+
+# return current column index.
+def table_get_column_index():
+    return cimgui.TableGetColumnIndex()
+
+# return NULL if column didn't have a name declared by TableSetupColumn(). Pass -1 to use current column.
+def table_get_column_name(int column_n = -1):
+    return cimgui.TableGetColumnName(column_n)
+
+# return true if column is visible. Same value is also returned by TableNextCell() and TableSetColumnIndex(). Pass -1 to use current column.
+def table_get_column_is_visible(int column_n = -1):
+    return cimgui.TableGetColumnIsVisible(column_n)
+
+# return true if column is included in the sort specs. Rarely used, can be useful to tell if a data change should trigger resort. Equivalent to test ImGuiTableSortSpecs's ->ColumnsMask & (1 << column_n). Pass -1 to use current column.
+def table_get_column_is_sorted(int column_n = -1):
+    return cimgui.TableGetColumnIsSorted(column_n)
+
+# Tables: Headers & Columns declaration
+# - Use TableSetupColumn() to specify label, resizing policy, default width, id, various other flags etc.
+# - The name passed to TableSetupColumn() is used by TableAutoHeaders() and by the context-menu
+# - Use TableAutoHeaders() to submit the whole header row, otherwise you may treat the header row as a regular row, manually call TableHeader() and other widgets.
+# - Headers are required to perform some interactions: reordering, sorting, context menu # FIXME-TABLE: remove context from this list!
+
+def table_setup_column(str label, cimgui.ImGuiTableColumnFlags flags = 0, float init_width_or_weight = -1.0, cimgui.ImU32 user_id = 0):
+    return cimgui.TableSetupColumn(_bytes(label), flags, init_width_or_weight, user_id)
+
+# submit all headers cells based on data provided to TableSetupColumn() + submit context menu
+def table_auto_headers():                         
+    return cimgui.TableAutoHeaders()
+
+# submit one header cell manually.
+def table_header(str label):             
+    return cimgui.TableHeader(_bytes(label))
 
 
 def begin_drag_drop_source(cimgui.ImGuiDragDropFlags flags=0):

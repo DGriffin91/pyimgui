@@ -60,6 +60,9 @@ cdef extern from "imgui.h":
     ctypedef int ImGuiComboFlags
     ctypedef int ImGuiDragDropFlags
     ctypedef int ImGuiFocusedFlags
+    ctypedef int ImGuiTableFlags
+    ctypedef int ImGuiTableRowFlags
+    ctypedef int ImGuiTableColumnFlags
     ctypedef int ImGuiHoveredFlags
     ctypedef int ImGuiInputTextFlags
     ctypedef int ImGuiSelectableFlags
@@ -340,40 +343,84 @@ cdef extern from "imgui.h":
     ctypedef struct ImGuiStorage:
         pass
 
-    cdef cppclass ImGuiStyle:
-        float       Alpha  # ✓
-        ImVec2      WindowPadding  # ✓
-        float       WindowRounding  # ✓
-        float       WindowBorderSize  # ✓
-        ImVec2      WindowMinSize  # ✓
-        ImVec2      WindowTitleAlign  # ✓
-        float       ChildRounding  # ✓
-        float       ChildBorderSize  # ✓
-        float       PopupRounding  # ✓
-        float       PopupBorderSize  # ✓
-        ImVec2      FramePadding  # ✓
-        float       FrameRounding  # ✓
-        float       FrameBorderSize  # ✓
-        ImVec2      ItemSpacing  # ✓
-        ImVec2      ItemInnerSpacing  # ✓
-        ImVec2      TouchExtraPadding  # ✓
-        float       IndentSpacing  # ✓
-        float       ColumnsMinSpacing  # ✓
-        float       ScrollbarSize  # ✓
-        float       ScrollbarRounding  # ✓
-        float       GrabMinSize  # ✓
-        float       GrabRounding  # ✓
-        ImVec2      ButtonTextAlign  # ✓
-        ImVec2      DisplayWindowPadding  # ✓
-        ImVec2      DisplaySafeAreaPadding  # ✓
-        float       MouseCursorScale   # ✓
-        bool        AntiAliasedLines  # ✓
-        bool        AntiAliasedFill  # ✓
-        float       CurveTessellationTol  # ✓
+    
+    #cdef cppclass ImGuiStyle:
+    #    float       Alpha  # ✓
+    #    ImVec2      WindowPadding  # ✓
+    #    float       WindowRounding  # ✓
+    #    float       WindowBorderSize  # ✓
+    #    ImVec2      WindowMinSize  # ✓
+    #    ImVec2      WindowTitleAlign  # ✓
+    #    float       ChildRounding  # ✓
+    #    float       ChildBorderSize  # ✓
+    #    float       PopupRounding  # ✓
+    #    float       PopupBorderSize  # ✓
+    #    ImVec2      FramePadding  # ✓
+    #    float       FrameRounding  # ✓
+    #    float       FrameBorderSize  # ✓
+    #    ImVec2      ItemSpacing  # ✓
+    #    ImVec2      ItemInnerSpacing  # ✓
+    #    ImVec2      TouchExtraPadding  # ✓
+    #    float       IndentSpacing  # ✓
+    #    float       ColumnsMinSpacing  # ✓
+    #    float       ScrollbarSize  # ✓
+    #    float       ScrollbarRounding  # ✓
+    #    float       GrabMinSize  # ✓
+    #    float       GrabRounding  # ✓
+    #    ImVec2      ButtonTextAlign  # ✓
+    #    ImVec2      DisplayWindowPadding  # ✓
+    #    ImVec2      DisplaySafeAreaPadding  # ✓
+    #    float       MouseCursorScale   # ✓
+    #    bool        AntiAliasedLines  # ✓
+    #    bool        AntiAliasedFill  # ✓
+    #    float       CurveTessellationTol  # ✓
+    #
+    #    # note: originally Colors[ImGuiCol_COUNT]
+    #    # todo: find a way to access enum var here
+    #    ImVec4*     Colors
+    
 
-        # note: originally Colors[ImGuiCol_COUNT]
-        # todo: find a way to access enum var here
-        ImVec4*     Colors
+    cdef cppclass ImGuiStyle:
+        float Alpha # imgui.h : 1547
+        ImVec2 WindowPadding # imgui.h : 1548
+        float WindowRounding # imgui.h : 1549
+        float WindowBorderSize # imgui.h : 1550
+        ImVec2 WindowMinSize # imgui.h : 1551
+        ImVec2 WindowTitleAlign # imgui.h : 1552
+        ImGuiDir WindowMenuButtonPosition # imgui.h : 1553
+        float ChildRounding # imgui.h : 1554
+        float ChildBorderSize # imgui.h : 1555
+        float PopupRounding # imgui.h : 1556
+        float PopupBorderSize # imgui.h : 1557
+        ImVec2 FramePadding # imgui.h : 1558
+        float FrameRounding # imgui.h : 1559
+        float FrameBorderSize # imgui.h : 1560
+        ImVec2 ItemSpacing # imgui.h : 1561
+        ImVec2 ItemInnerSpacing # imgui.h : 1562
+        ImVec2 CellPadding # imgui.h : 1563
+        ImVec2 TouchExtraPadding # imgui.h : 1564
+        float IndentSpacing # imgui.h : 1565
+        float ColumnsMinSpacing # imgui.h : 1566
+        float ScrollbarSize # imgui.h : 1567
+        float ScrollbarRounding # imgui.h : 1568
+        float GrabMinSize # imgui.h : 1569
+        float GrabRounding # imgui.h : 1570
+        float TabRounding # imgui.h : 1571
+        float TabBorderSize # imgui.h : 1572
+        ImGuiDir ColorButtonPosition # imgui.h : 1573
+        ImVec2 ButtonTextAlign # imgui.h : 1574
+        ImVec2 SelectableTextAlign # imgui.h : 1575
+        ImVec2 DisplayWindowPadding # imgui.h : 1576
+        ImVec2 DisplaySafeAreaPadding # imgui.h : 1577
+        float MouseCursorScale # imgui.h : 1578
+        bool AntiAliasedLines # imgui.h : 1579
+        bool AntiAliasedFill # imgui.h : 1580
+        float CurveTessellationTol # imgui.h : 1581
+        float CircleSegmentMaxError # imgui.h : 1582
+        ImVec4 [55] Colors # imgui.h : 1583
+        void ScaleAllSizes (float scale_factor) except + # imgui.h : 1586
+
+
 
     ctypedef struct ImGuiPayload:
         void* Data  # ✓
@@ -1119,6 +1166,24 @@ cdef extern from "imgui.h" namespace "ImGui":
     void SetColumnOffset(int column_index, float offset_x) except +  # ✓
     int GetColumnsCount() except +  # ✓
 
+
+    # ====
+    # Tables
+
+    bool BeginTable(const char* str_id, int columns_count, ImGuiTableFlags flags, ImVec2 outer_size, float inner_width) except +  # ✓
+    void EndTable() except +  # ✓
+    void TableNextRow(ImGuiTableRowFlags row_flags, float min_row_height) except +  # ✓
+    bool TableNextCell() except +  # ✓ 
+    bool TableSetColumnIndex(int column_n) except +  # ✓ 
+    int TableGetColumnIndex() except +  # ✓ 
+    const char*  TableGetColumnName(int column_n) except +  # ✓ 
+    bool TableGetColumnIsVisible(int column_n) except +  # ✓ 
+    bool TableGetColumnIsSorted(int column_n) except +  # ✓ 
+
+
+    void TableSetupColumn(const char* label, ImGuiTableColumnFlags flags, float init_width_or_weight, ImU32 user_id) except +  # ✓ 
+    void TableAutoHeaders() except +  # ✓ 
+    void TableHeader(const char* label) except +  # ✓ 
 
     # Logging: all text output from interface is redirected to
     # tty/file/clipboard. By default, tree nodes are automatically opened
