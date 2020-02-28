@@ -136,10 +136,6 @@ TREE_NODE_COLLAPSING_HEADER = enums.ImGuiTreeNodeFlags_CollapsingHeader
 SELECTABLE_DONT_CLOSE_POPUPS = enums.ImGuiSelectableFlags_DontClosePopups
 SELECTABLE_SPAN_ALL_COLUMNS = enums.ImGuiSelectableFlags_SpanAllColumns
 SELECTABLE_ALLOW_DOUBLE_CLICK = enums.ImGuiSelectableFlags_AllowDoubleClick
-<<<<<<< HEAD
-SELECTABLE_NONE = enums.ImGuiSelectableFlags_None 
-=======
->>>>>>> 42263d26b1e21ba0677176632d2d4822acfe1207
 SELECTABLE_DISABLED = enums.ImGuiSelectableFlags_Disabled
 SELECTABLE_ALLOW_ITEM_OVERLAP = enums.ImGuiSelectableFlags_AllowItemOverlap
 
