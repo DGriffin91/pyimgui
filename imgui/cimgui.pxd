@@ -131,7 +131,7 @@ cdef extern from "imgui.h":
         ImVec2      MousePos  # ✓
         bool        MouseDown[5]  # ✓
         float       MouseWheel  # ✓
-        float       MouseWheelH  # ✗
+        float       MouseWheelH  # ✓
         bool        MouseDrawCursor  # ✓
         bool        KeyCtrl  # ✓
         bool        KeyShift  # ✓
@@ -141,8 +141,8 @@ cdef extern from "imgui.h":
         ImWchar     InputCharacters[16+1]  # ✗
 
         void        AddInputCharacter(ImWchar c) except +  # ✓
-        void        AddInputCharactersUTF8(const char* utf8_chars) except +  # ✗
-        void        ClearInputCharacters() except +  # ✗
+        void        AddInputCharactersUTF8(const char* utf8_chars) except +  # ✓
+        void        ClearInputCharacters() except +  # ✓
 
         # ====
         # source-note: Output - Retrieve after calling NewFrame(), you can use
@@ -667,8 +667,8 @@ cdef extern from "imgui.h" namespace "ImGui":
     void TextUnformatted(const char*) except +  # ✓
     void Text(const char*, ...) except +  # ✓
     void TextColored(const ImVec4&, const char*, ...) except +  # ✓
-    void TextDisabled(const char*, ...) except +  # ✗
-    void TextWrapped(const char*, ...) except +  # ✗
+    void TextDisabled(const char*, ...) except +  # ✓
+    void TextWrapped(const char*, ...) except +  # ✓
     void LabelText(const char*, const char*, ...) except +  # ✓
     void BulletText(const char*, ...) except +  # ✓
 

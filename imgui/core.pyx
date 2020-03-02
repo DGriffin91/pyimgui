@@ -1764,6 +1764,14 @@ cdef class _IO(object):
     @mouse_wheel.setter
     def mouse_wheel(self, float value):
         self._ptr.MouseWheel = value
+    
+    @property
+    def mouse_wheel_horizontal(self):
+        return self._ptr.MouseWheelH
+    
+    @mouse_wheel_horizontal.setter
+    def mouse_wheel_horizontal(self, float value):
+        self._ptr.MouseWheelH = value
 
     @property
     def mouse_draw_cursor(self):
@@ -1820,6 +1828,12 @@ cdef class _IO(object):
 
     def add_input_character(self, cimgui.ImWchar c):
         self._ptr.AddInputCharacter(c)
+    
+    def add_input_characters_utf8(self, str utf8_chars):
+        self._ptr.AddInputCharactersUTF8(_bytes(utf8_chars))
+    
+    def clear_input_characters(self):
+        self._ptr.ClearInputCharacters()
 
     # ... mapping of output properties ...
     @property
@@ -3533,25 +3547,49 @@ def text_colored(str text, float r, float g, float b, float a=1.):
     cimgui.TextColored(_cast_args_ImVec4(r, g, b, a), "%s", _bytes(text))
 
 def text_disabled(str text):
-    """Add text to current widget stack.
+    """Add disabled(grayed out) text to current widget stack.
 
     .. visual-example::
-        :title: simple text widget
+        :title: disabled text widget
         :height: 80
         :auto_layout:
 
-        imgui.begin("Example: simple text")
-        imgui.text("Simple text")
+        imgui.begin("Example: disabled text")
+        imgui.text_disabled("Disabled text")
         imgui.end()
 
     Args:
         text (str): text to display.
 
     .. wraps::
-        Text(const char* fmt, ...)
+        TextDisabled(const char*, ...)
     """
     # note: "%s" required for safety and to favor of Python string formating
     cimgui.TextDisabled("%s", _bytes(text))
+
+def text_wrapped(str text):
+    """Add wrappable text to current widget stack.
+
+    .. visual-example::
+        :title: Wrappable Text
+        :height: 80
+        :width: 40
+        :auto_layout:
+
+        imgui.begin("Text wrap")
+        # Resize the window to see text wrapping
+        imgui.text_wrapped("This text will wrap around.")
+        imgui.end()
+
+    Args:
+        text (str): text to display
+
+    .. wraps::
+        TextWrapped(const char* fmt, ...)
+    """
+    # note: "%s" required for safety and to favor of Python string formating
+    cimgui.TextWrapped("%s", _bytes(text))
+
 
 def label_text(str label, str text):
     """Display text+label aligned the same way as value+label widgets.
