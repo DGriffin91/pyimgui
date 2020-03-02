@@ -111,7 +111,7 @@ cdef extern from "imgui.h":
         bool          ConfigMacOSXBehaviors  # ✓
         bool          ConfigInputTextCursorBlink  # ✓
         bool          ConfigResizeWindowsFromEdges  # ✓
-        ImFont* FontDefault  # ✓
+        ImFont*       FontDefault  # ✓
 
         # ====
         # source-note: User Functions
