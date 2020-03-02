@@ -1680,6 +1680,14 @@ cdef class _IO(object):
         self._ptr.FontAllowUserScaling = value
 
     @property
+    def font_default(self):
+        return _Font.from_ptr(self._ptr.FontDefault)
+        
+    @font_default.setter
+    def font_default(self, _Font font):
+        self._ptr.FontDefault = font._ptr
+
+    @property
     def display_fb_scale(self):
         return _cast_ImVec2_tuple(self._ptr.DisplayFramebufferScale)
 
